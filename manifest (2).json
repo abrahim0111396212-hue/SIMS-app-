@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "description": "Smart_stock",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SmartInventoryManagementSystems",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "SIMS",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "SIMS Smart "
+}

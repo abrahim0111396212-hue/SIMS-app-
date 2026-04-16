@@ -1,0 +1,13 @@
+{
+  "background_color": "rgb(50, 207, 255)",
+  "description": "Smart_stock",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SIMS",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "SIMS",
+  "start_url": "/",
+  "theme_color": "hsl(0, 0%, 0%)",
+  "id": "Abrahim0111396212@gmail.com "
+}
