@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMS | نظام إدارة المخزون الذكي</title>
+    
+    <!-- Bootstrap 5 RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- ملف التنسيقات -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== صفحة تسجيل الدخول ==================== -->
+<div id="loginPage" class="page active-page">
+    <div class="container">
+        <div class="login-container">
+            <div class="text-center mb-4">
+                <i class="fas fa-boxes fa-3x" style="color: #667eea;"></i>
+                <h2 class="mt-3">SIMS</h2>
+                <p class="text-muted">نظام إدارة المخزون الذكي</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label"><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" class="form-control" id="username" placeholder="admin" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" class="form-control" id="password" placeholder="admin" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                </div>
+            </form>
+            
+            <div class="text-center mt-3">
+                <a href="#" onclick="showRegister()">تسجيل جديد</a> | 
+                <a href="#" onclick="showForgotPassword()">نسيت كلمة السر</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== صفحة التسجيل ==================== -->
+<div id="registerPage" class="page">
+    <div class="container">
+        <div class="login-container">
+            <div class="text-center mb-4">
+                <h3>تسجيل حساب جديد</h3>
+            </div>
+            <form id="registerForm">
+                <div class="mb-3">
+                    <label class="form-label">الاسم</label>
+                    <input type="text" class="form-control" id="regName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">رقم الهاتف</label>
+                    <input type="tel" class="form-control" id="regPhone" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="regEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">اختيار القطاع</label>
+                    <select class="form-control" id="sectorSelect" required>
+                        <option value="">اختر القطاع</option>
+                        <option value="صناعي">صناعي</option>
+                        <option value="تجاري">تجاري</option>
+                        <option value="ملابس">ملابس</option>
+                        <option value="الكترونيات">الكترونيات</option>
+                        <option value="أغذية">أغذية</option>
+                        <option value="مشروبات">مشروبات</option>
+                        <option value="أثاث">أثاث</option>
+                        <option value="مستحضرات تجميل">مستحضرات تجميل</option>
+                        <option value="أدوات منزلية">أدوات منزلية</option>
+                        <option value="قرطاسية">قرطاسية</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">اختيار الفرع</label>
+                    <select class="form-control" id="branchSelect" required>
+                        <option value="">اختر الفرع</option>
+                        <option value="الرياض">فرع الرياض</option>
+                        <option value="جدة">فرع جدة</option>
+                        <option value="الدمام">فرع الدمام</option>
+                        <option value="مكة">فرع مكة</option>
+                        <option value="المدينة">فرع المدينة</option>
+                        <option value="القصيم">فرع القصيم</option>
+                        <option value="تبوك">فرع تبوك</option>
+                        <option value="أبها">فرع أبها</option>
+                    </select>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">تسجيل</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="#" onclick="showLogin()">العودة لتسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== الصفحة الرئيسية للتطبيق ==================== -->
+<div id="appPage" class="page">
+    <!-- القائمة الجانبية -->
+    <div class="sidebar">
+        <div class="text-center py-4">
+            <i class="fas fa-boxes fa-2x" style="color: #667eea;"></i>
+            <h5 class="mt-2">SIMS</h5>
+            <p class="text-muted small">نظام إدارة المخزون</p>
+        </div>
+        
+        <div class="menu-items">
+            <div class="menu-item active" onclick="showPage('dashboard', this)">
+                <i class="fas fa-tachometer-alt"></i> لوحة المعلومات
+            </div>
+            <div class="menu-item" onclick="showPage('addProduct', this)">
+                <i class="fas fa-plus-circle"></i> إضافة منتج
+            </div>
+            <div class="menu-item" onclick="showPage('sellProduct', this)">
+                <i class="fas fa-shopping-cart"></i> بيع منتجات
+            </div>
+            <div class="menu-item" onclick="showPage('forecast', this)">
+                <i class="fas fa-chart-line"></i> التنبؤ بالمشتريات
+            </div>
+            <div class="menu-item" onclick="showPage('economicOrder', this)">
+                <i class="fas fa-calculator"></i> الكمية الاقتصادية
+            </div>
+            <div class="menu-item" onclick="showPage('inventory', this)">
+                <i class="fas fa-clipboard-list"></i> جرد حساب
+            </div>
+            <div class="menu-item" onclick="showPage('transactions', this)">
+                <i class="fas fa-history"></i> تسجيل المعاملات
+            </div>
+            <div class="menu-item" onclick="showPage('debts', this)">
+                <i class="fas fa-money-bill-wave"></i> الديون
+            </div>
+            <div class="menu-item" onclick="showPage('invoices', this)">
+                <i class="fas fa-file-invoice"></i> الفواتير
+            </div>
+            <div class="menu-item" onclick="showPage('settings', this)">
+                <i class="fas fa-cog"></i> الضبط
+            </div>
+        </div>
+        
+        <div class="text-center py-3 mt-4">
+            <button class="btn btn-outline-danger btn-sm" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+            </button>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        
+        <!-- 1. لوحة المعلومات -->
+        <div id="dashboard" class="content-page">
+            <h4 class="mb-4"><i class="fas fa-tachometer-alt"></i> لوحة المعلومات</h4>
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <h6>إجمالي المنتجات</h6>
+                            <h3 id="totalProducts">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <h6>منتجات منخفضة</h6>
+                            <h3 id="lowStockProducts">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <h6>مبيعات اليوم</h6>
+                            <h3 id="todaySales">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <h6>إجمالي الديون</h6>
+                            <h3 id="totalDebts">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-table"></i> قائمة المنتجات
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr><th>اسم المنتج</th><th>تاريخ الإنتاج</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>الكمية الاقتصادية</th><th>الحد الأدنى</th><th>ROP</th><th>سعر الشراء</th><th>سعر البيع</th><th>المتوفرة</th><th>المبيعات</th></tr>
+                            </thead>
+                            <tbody id="productsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. إضافة منتج -->
+        <div id="addProduct" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-plus-circle"></i> إضافة منتج جديد</h4>
+            <div class="card">
+                <div class="card-body">
+                    <form id="addProductForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label>اسم المنتج</label><input type="text" class="form-control" id="productName" required></div>
+                            <div class="col-md-6 mb-3"><label>الكمية</label><input type="number" class="form-control" id="productQuantity" required></div>
+                            <div class="col-md-6 mb-3"><label>تاريخ الإنتاج</label><input type="date" class="form-control" id="productionDate" required></div>
+                            <div class="col-md-6 mb-3"><label>تاريخ الانتهاء</label><input type="date" class="form-control" id="expiryDate" required></div>
+                            <div class="col-md-6 mb-3"><label>سعر الشراء</label><input type="number" class="form-control" id="purchasePrice" required></div>
+                            <div class="col-md-6 mb-3"><label>سعر البيع</label><input type="number" class="form-control" id="sellingPrice" required></div>
+                            <div class="col-md-6 mb-3"><label>الحد الأدنى</label><input type="number" class="form-control" id="minQuantity" required></div>
+                            <div class="col-md-6 mb-3"><label>الحد المسموح</label><input type="number" class="form-control" id="maxQuantity" required></div>
+                            <div class="col-md-12 mb-3">
+                                <label>الباركود</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="barcode" readonly>
+                                    <button type="button" class="btn btn-primary" onclick="generateBarcode()">توليد باركود</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid"><button type="submit" class="btn btn-primary">حفظ المنتج</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. بيع منتجات -->
+        <div id="sellProduct" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-shopping-cart"></i> بيع منتجات</h4>
+            <div class="card">
+                <div class="card-body">
+                    <form id="sellForm">
+                        <div class="mb-3"><label>اختر المنتج</label><select class="form-control" id="productSelect" onchange="loadProductDetails()"><option value="">اختر منتج...</option></select></div>
+                        <div class="mb-3"><label>الكمية المراد بيعها</label><input type="number" class="form-control" id="sellQuantity" oninput="calculateRemaining()"></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label>سعر البيع</label><input type="number" class="form-control" id="sellPrice" readonly></div>
+                            <div class="col-md-6 mb-3"><label>المتبقي</label><input type="number" class="form-control" id="remainingQuantity" readonly></div>
+                        </div>
+                        <div class="d-grid"><button type="submit" class="btn btn-primary">إتمام البيع</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. التنبؤ بالمشتريات -->
+        <div id="forecast" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-chart-line"></i> التنبؤ بالمشتريات</h4>
+            <div class="card"><div class="card-header">المنتجات التي يجب شراؤها أولاً</div><div class="card-body"><div class="table-responsive"><table class="table"><thead><tr><th>المنتج</th><th>الحالة</th><th>الكمية</th><th>الأيام المتبقية</th><th>إجراء</th></tr></thead><tbody id="forecastTableBody"></tbody></table></div></div></div>
+        </div>
+
+        <!-- 5. الكمية الاقتصادية -->
+        <div id="economicOrder" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-calculator"></i> الكمية الاقتصادية للشراء</h4>
+            <div class="row"><div class="col-md-4"><div class="card"><div class="card-body"><h6>الحد المسموح</h6><p id="maxLimitDisplay">0</p></div></div></div><div class="col-md-4"><div class="card"><div class="card-body"><h6>الحد الأدنى</h6><p id="minLimitDisplay">0</p></div></div></div><div class="col-md-4"><div class="card"><div class="card-body"><h6>ROP</h6><p id="ropDisplay">0</p></div></div></div></div>
+            <div class="card mt-3"><div class="card-header">الأيام المتبقية للمنتجات</div><div class="card-body"><table class="table"><thead><tr><th>المنتج</th><th>الأيام المتبقية</th></tr></thead><tbody id="remainingDaysBody"></tbody></table></div></div>
+        </div>
+
+        <!-- 6. جرد حساب -->
+        <div id="inventory" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-clipboard-list"></i> جرد حساب</h4>
+            <div class="card"><div class="card-body"><div class="btn-group mb-3"><button class="btn btn-primary" onclick="showInventory('all')">كل القطاعات</button><button class="btn btn-outline-primary" onclick="showInventory('single')">سلعة محددة</button><button class="btn btn-outline-primary" onclick="showInventory('sector')">قطاع محدد</button></div><div id="inventoryDisplay"></div></div></div>
+        </div>
+
+        <!-- 7. تسجيل المعاملات -->
+        <div id="transactions" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-history"></i> تسجيل المعاملات</h4>
+            <div class="card"><div class="card-body"><form id="transactionForm"><div class="mb-3"><label>نوع المعاملة</label><select class="form-control" id="transactionType"><option value="sale">بيع</option><option value="purchase">شراء</option></select></div><div class="mb-3"><label>المنتج</label><select class="form-control" id="transactionProduct"></select></div><div class="mb-3"><label>الكمية</label><input type="number" class="form-control" id="transactionQuantity"></div><div class="mb-3"><label>ملاحظات</label><textarea class="form-control" id="transactionNotes" rows="2"></textarea></div><div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="createNotification"><label class="form-check-label">تحويل إلى إشعار</label></div><div class="d-grid"><button type="submit" class="btn btn-primary">تسجيل</button></div></form></div></div>
+            <div class="card mt-3"><div class="card-header">سجل المعاملات</div><div class="card-body"><table class="table"><thead><tr><th>التاريخ</th><th>النوع</th><th>المنتج</th><th>الكمية</th><th>ملاحظات</th></tr></thead><tbody id="transactionsTableBody"></tbody></table></div></div>
+        </div>
+
+        <!-- 8. الديون -->
+        <div id="debts" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-money-bill-wave"></i> الديون</h4>
+            <div class="card"><div class="card-body"><table class="table"><thead><tr><th>التاريخ</th><th>المنتج</th><th>المدفوع</th><th>المتبقي</th><th>الحالة</th></tr></thead><tbody id="debtsTableBody"></tbody></table></div></div>
+        </div>
+
+        <!-- 9. الفواتير -->
+        <div id="invoices" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-file-invoice"></i> الفواتير</h4>
+            <div class="card"><div class="card-header"><div class="btn-group"><button class="btn btn-sm btn-primary" onclick="loadInvoices('daily')">يومي</button><button class="btn btn-sm btn-primary" onclick="loadInvoices('weekly')">أسبوعي</button><button class="btn btn-sm btn-primary" onclick="loadInvoices('monthly')">شهري</button></div></div><div class="card-body"><table class="table"><thead><tr><th>رقم الفاتورة</th><th>التاريخ</th><th>النوع</th><th>المنتج</th><th>الكمية</th><th>السعر</th><th>الإجمالي</th></tr></thead><tbody id="invoicesTableBody"></tbody></table></div></div>
+        </div>
+
+        <!-- 10. الضبط -->
+        <div id="settings" class="content-page" style="display:none;">
+            <h4 class="mb-4"><i class="fas fa-cog"></i> الضبط</h4>
+            <div class="card"><div class="card-body"><form><div class="mb-3"><label>كلمة السر الحالية</label><input type="password" class="form-control"></div><div class="mb-3"><label>كلمة السر الجديدة</label><input type="password" class="form-control"></div><div class="mb-3"><label>تأكيد كلمة السر</label><input type="password" class="form-control"></div><hr><h6>أسئلة الأمان</h6><div class="mb-3"><select class="form-control"><option>ما اسم والدتك؟</option><option>ما اسم أول حيوان أليف لديك؟</option></select></div><div class="mb-3"><input type="text" class="form-control" placeholder="الإجابة"></div><div class="d-grid"><button type="submit" class="btn btn-primary">حفظ التغييرات</button></div></form></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- منطقة الإشعارات -->
+<div id="notificationArea" style="position: fixed; top: 20px; left: 20px; z-index: 9999;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
